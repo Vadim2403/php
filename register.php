@@ -40,8 +40,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         exit();
     }
     else{
+        ?>
+        <html>alert("Пошта вже використовується");</html>
         
-        alert("Пошта вже використовується");
+<?php
     }
 }
 ?>
