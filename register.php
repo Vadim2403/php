@@ -1,5 +1,6 @@
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST") {
+    include_once("connection_database.php");
     $email = $_POST["txt_email"];
     $password = $_POST["txt_password"];
     //echo "<script>alert('".$password."');</script>";
@@ -30,7 +31,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 
 
-       include_once("connection_database.php");
 
         $sql = "INSERT INTO `tbl_users` (`email`, `password`, `image`) VALUES (?, ?, ?);";
         $stmt= $dbh->prepare($sql);
