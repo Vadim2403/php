@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $flag=true;
     while($row=$stmt->fetch(PDO::FETCH_ASSOC))
     {
-        if($email == echo $row['email'])
+        if($email == $row['email'])
             $flag = false;
 
     }
