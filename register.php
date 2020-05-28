@@ -1,14 +1,20 @@
-
-
-<!doctype html>
-<html lang="en">
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST") {
     include_once("connection_database.php");
     $email = $_POST["txt_email"];
     $password = $_POST["txt_password"];
     //echo "<script>alert('".$password."');</script>";
+    $sql = "SELECT u.id, u.email, u.image FROM tbl_users AS u";
+    $stmt= $dbh->prepare($sql);
+    $stmt->execute();
+    $flag=true;
+    while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+        if($email == $row['email'])
+            $flag = false;
 
+    }
+    if($flag == true) {
 
         include_once("lib/compressor.php");
 
@@ -32,10 +38,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
         header("Location: index.php");
         exit();
+    }
+    else{
+       
+        $message = "Пошта вже використовується";
+        echo "<script type='text/javascript'>alert('$message');</script>";
 
-
+    }
+}
 ?>
 
+<!doctype html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -62,7 +76,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     <div class="row">
         <h1 class="col-12 text-center">���������</h1>
 
-        <form method="post" class="offset-3 col-6" enctype="multipart/form-data" id="mainform">
+        <form method="post" class="offset-3 col-6" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control"
@@ -109,44 +123,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 <script src="node_modules/cropperjs/dist/cropper.min.js"></script>
 
 <script>
-    $('#mainform').submit(function(){
-        <?
-        include_once("connection_database.php");
-        $sql = "SELECT u.id, u.email, u.image FROM tbl_users AS u";
-        $stmt= $dbh->prepare($sql);
-        $stmt->execute();
-        $flag=true;
-        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-        {
-            if($email == $row['email'])
-                $flag = false;
 
-        }
-        if($flag==true) {
-        ?>
-            alert("Пошта вже використовується")
-            return false;
-            <?php
-            }
-        ?>
-
-    });
-    $(function() {
-        window.addEventListener('load', function() {
-// Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-// Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
         // if( document.getElementById('exampleInputEmail1').value == "" ) {
         //     alert( "Please provide your name!" );
         //     return false;
