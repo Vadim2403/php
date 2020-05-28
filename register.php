@@ -67,7 +67,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                        id="exampleInputEmail1"
                        aria-describedby="emailHelp"
                        name="txt_email"
-                       placeholder="Enter email">
+                       placeholder="Enter email" required>
                 <div class="invalid-feedback">
                     Please provide a valid city.
                 </div>
@@ -111,6 +111,21 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 <script>
     $(function() {
+        window.addEventListener('load', function() {
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+// Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
         // if( document.getElementById('exampleInputEmail1').value == "" ) {
         //     alert( "Please provide your name!" );
         //     return false;
