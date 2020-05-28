@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                 <input type="file" class="form-control"
 
                        name="image"
-                       id="image">
+                       id="image" required>
             </div>
 
             <div class="form-check">
