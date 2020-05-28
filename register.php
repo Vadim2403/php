@@ -175,7 +175,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             $("#valera").attr("src", imgContent);
             dialogCropper.modal('hide');
         });
-    });
+    
+    
 
 </script>
 
