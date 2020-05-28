@@ -68,6 +68,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                        aria-describedby="emailHelp"
                        name="txt_email"
                        placeholder="Enter email">
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
 
             </div>
             <div class="form-group">
@@ -108,10 +111,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 <script>
     $(function() {
-        if( document.getElementById('exampleInputEmail1').value == "" ) {
-            alert( "Please provide your name!" );
-            return false;
-         }
+        // if( document.getElementById('exampleInputEmail1').value == "" ) {
+        //     alert( "Please provide your name!" );
+        //     return false;
+        //  }
         let dialogCropper = $("#cropperModal");
         $("#image").on("change", function() {
             //console.log("----select file------", this.files);
