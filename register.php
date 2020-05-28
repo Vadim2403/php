@@ -68,16 +68,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                        aria-describedby="emailHelp"
                        name="txt_email"
                        placeholder="Enter email" required>
-                <div class="invalid-feedback">
-                    Please provide a valid city.
-                </div>
 
             </div>
             <div class="form-group">
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control"
                        name="txt_password"
-                       id="exampleInputPassword1" placeholder="Password">
+                       id="exampleInputPassword1" placeholder="Password" required>
             </div>
 
             <div>
