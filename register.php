@@ -1,3 +1,6 @@
+
+
+<!doctype html>
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST") {
     include_once("connection_database.php");
@@ -40,15 +43,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         exit();
     }
     else{
+        exit();
+
         ?>
-        <html>alert("Пошта вже використовується");</html>
-        
+alert("Пошта вже використовується");
+
+
 <?php
     }
 }
 ?>
-
-<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
