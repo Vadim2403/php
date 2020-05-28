@@ -3,7 +3,17 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
     $email = $_POST["txt_email"];
     $password = $_POST["txt_password"];
     //echo "<script>alert('".$password."');</script>";
-    if(!empty($email) && !empty($password)) {
+    $sql = "SELECT u.id, u.email, u.image FROM tbl_users AS u";
+    $stmt= $dbh->prepare($sql);
+    $stmt->execute();
+    $flag=true;
+    while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+    {
+        if($email == echo $row['email'])
+            $flag = false;
+
+    }
+    if($flag == true) {
 
         include_once("lib/compressor.php");
 
@@ -28,6 +38,11 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
         header("Location: index.php");
         exit();
+    }
+    else{
+        ?>
+        alert("Пошта вже використовується");
+<?php
     }
 }
 ?>
