@@ -40,9 +40,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         exit();
     }
     else{
-       
+
         $message = "Пошта вже використовується";
-        echo "<script type='text/javascript'>alert('$message');</script>";
+        echo "<script type='text/javascript'>alert('$message'); window.history.replaceState( null, null, window.location.href );</script>";
 
     }
 }
