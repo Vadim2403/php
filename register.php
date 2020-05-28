@@ -58,7 +58,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 <div class="container">
     <div class="row">
-        <h1 class="col-12 text-center">Реєстрація</h1>
+        <h1 class="col-12 text-center">пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ</h1>
 
         <form method="post" class="offset-3 col-6" enctype="multipart/form-data">
             <div class="form-group">
@@ -108,7 +108,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
 <script>
     $(function() {
-
+        if( document.getElementById('exampleInputEmail1').value == "" ) {
+            alert( "Please provide your name!" );
+            return false;
+         }
         let dialogCropper = $("#cropperModal");
         $("#image").on("change", function() {
             //console.log("----select file------", this.files);
