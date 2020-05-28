@@ -1,23 +1,14 @@
 
 
 <!doctype html>
+<html lang="en">
 <?php
 if($_SERVER["REQUEST_METHOD"]=="POST") {
     include_once("connection_database.php");
     $email = $_POST["txt_email"];
     $password = $_POST["txt_password"];
     //echo "<script>alert('".$password."');</script>";
-    $sql = "SELECT u.id, u.email, u.image FROM tbl_users AS u";
-    $stmt= $dbh->prepare($sql);
-    $stmt->execute();
-    $flag=true;
-    while($row=$stmt->fetch(PDO::FETCH_ASSOC))
-    {
-        if($email == $row['email'])
-            $flag = false;
 
-    }
-    if($flag == true) {
 
         include_once("lib/compressor.php");
 
@@ -41,19 +32,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
         header("Location: index.php");
         exit();
-    }
-    else{
-        exit();
-
-        ?>
-alert("Пошта вже використовується");
 
 
-<?php
-    }
-}
 ?>
-<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -80,7 +62,7 @@ alert("Пошта вже використовується");
     <div class="row">
         <h1 class="col-12 text-center">���������</h1>
 
-        <form method="post" class="offset-3 col-6" enctype="multipart/form-data">
+        <form method="post" class="offset-3 col-6" enctype="multipart/form-data" id="mainform">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control"
@@ -127,6 +109,28 @@ alert("Пошта вже використовується");
 <script src="node_modules/cropperjs/dist/cropper.min.js"></script>
 
 <script>
+    $('#mainform').submit(function(){
+        <?
+        include_once("connection_database.php");
+        $sql = "SELECT u.id, u.email, u.image FROM tbl_users AS u";
+        $stmt= $dbh->prepare($sql);
+        $stmt->execute();
+        $flag=true;
+        while($row=$stmt->fetch(PDO::FETCH_ASSOC))
+        {
+            if($email == $row['email'])
+                $flag = false;
+
+        }
+        if($flag==true) {
+        ?>
+            alert("Пошта вже використовується")
+            return false;
+            <?php
+            }
+        ?>
+
+    });
     $(function() {
         window.addEventListener('load', function() {
 // Fetch all the forms we want to apply custom Bootstrap validation styles to
