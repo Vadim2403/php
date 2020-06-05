@@ -140,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         img = new Image();
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
-                if(this.width > 300){;_URL.revokeObjectURL(objectUrl);
+                if(this.width > 300){_URL.revokeObjectURL(objectUrl);
             alert(this.width + " im here");
              file = this.files[0];
                 var reader = new FileReader();
@@ -153,11 +153,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                 }
                 reader.readAsDataURL(file);
                 }
-            }
-              else{
+                             else{
                 alert("Image must be more massive than 300");
                 document.getElementById("image").value = "";
                 }
+            }
+ 
         };
         img.src = objectUrl;
     }
