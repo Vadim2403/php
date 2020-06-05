@@ -22,6 +22,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         $file_name= uniqid('100_').'.jpg';
         $file_save_path=$uploaddir.$file_name;
         $size = getimagesize($file_save_path);
+        echo "<script type='text/javascript'>alert($size[0]); window.history.replaceState( null, null, window.location.href );</script>";
         if($size[0] < 300)
         {
           echo "<script type='text/javascript'>alert('Фото занадто мале, ширина меньше 300'); window.history.replaceState( null, null, window.location.href );</script>";
