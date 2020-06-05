@@ -21,14 +21,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/upload/';
         $file_name= uniqid('100_').'.jpg';
         $file_save_path=$uploaddir.$file_name;
-        $size = getimagesize($file_name);
-        echo "<script type='text/javascript'>alert($size[0]); window.history.replaceState( null, null, window.location.href );</script>";
-        if($size[0] < 300)
-        {
-          echo "<script type='text/javascript'>alert('Фото занадто мале, ширина меньше 300'); window.history.replaceState( null, null, window.location.href );</script>";
-          //sd
-          exit();
-        }
+
         my_image_resize(100, 100, $file_save_path, 'image');
 //        if (move_uploaded_file($_FILES['image']['tmp_name'], $file_save_path)) {
 //            echo "Р¤Р°Р№Р» РєРѕСЂСЂРµРєС‚РµРЅ Рё Р±С‹Р» СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ.\n";
@@ -110,6 +103,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
                        name="image"
                        id="image" required>
+                       
             </div>
 
             <div class="form-check">
@@ -139,7 +133,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         $("#image").on("change", function() {
             //console.log("----select file------", this.files);
             //this.files;
+
             if (this.files && this.files.length) {
+                 alert(this.files[0].size);
                 let file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
