@@ -134,17 +134,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             //console.log("----select file------", this.files);
             //this.files;
             if (this.files && this.files.length) {
-                 var file, img, wid = 0;
+                 var file, img;
+                 var wid = 0;
     if ((file = this.files[0])) {
         img = new Image();
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
-            wid = this.width;
-            _URL.revokeObjectURL(objectUrl);
+            wid = this.width;_URL.revokeObjectURL(objectUrl);
+            alert(this.width + " im here");
         };
         img.src = objectUrl;
     }
-    alert(wid);
+    
     if(wid > 300){
                 file = this.files[0];
                 var reader = new FileReader();
