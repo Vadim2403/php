@@ -134,16 +134,16 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             //console.log("----select file------", this.files);
             //this.files;
             if (this.files && this.files.length) {
-                 var file, img;
+                 var file, img, wid = 0;
     if ((file = this.files[0])) {
         img = new Image();
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
-            alert(this.width + " " + this.height);
-            _URL.revokeObjectURL(objectUrl);
+            wid = this.width
         };
         img.src = objectUrl;
     }
+    if(wid > 300){
                 file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
@@ -154,6 +154,10 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
                 }
                 reader.readAsDataURL(file);
+                }
+                else{
+                alert("Image must be more massive than 300");
+                }
 
             }
         });
