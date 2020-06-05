@@ -134,15 +134,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             //console.log("----select file------", this.files);
             //this.files;
 
-            if (this.files && this.files.length) {
-              img = new Image();
-        var objectUrl = _URL.createObjectURL(file);
-        img.onload = function () {
-            alert(this.width + " " + this.height);
-            
-        };
-        img.src = objectUrl;
-                let file = this.files[0];
+                let file = this.files[0];  
+                alert(file[0].size);
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     //cropper.destroy();
