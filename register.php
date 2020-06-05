@@ -139,7 +139,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         img = new Image();
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
-            wid = this.width
+            wid = this.width;
+            _URL.revokeObjectURL(objectUrl);
         };
         img.src = objectUrl;
     }
