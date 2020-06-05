@@ -143,6 +143,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         };
         img.src = objectUrl;
     }
+    alert(wid);
     if(wid > 300){
                 file = this.files[0];
                 var reader = new FileReader();
@@ -157,6 +158,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                 }
                 else{
                 alert("Image must be more massive than 300");
+                document.getElementById("image").value = "";
                 }
 
             }
