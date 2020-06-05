@@ -103,7 +103,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
 
                        name="image"
                        id="image" required>
-                       
             </div>
 
             <div class="form-check">
@@ -129,12 +128,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         //     alert( "Please provide your name!" );
         //     return false;
         //  }
-        let dialogCropper = $("#cropperModal");
         var _URL = window.URL || window.webkitURL;
+        let dialogCropper = $("#cropperModal");
         $("#image").on("change", function() {
             //console.log("----select file------", this.files);
-            //this.files;  
-   var file, img;
+            //this.files;
+            if (this.files && this.files.length) {
+                 var file, img;
     if ((file = this.files[0])) {
         img = new Image();
         var objectUrl = _URL.createObjectURL(file);
@@ -143,8 +143,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             _URL.revokeObjectURL(objectUrl);
         };
         img.src = objectUrl;
-            if (this.files && this.files.length) {
-                 alert(this.files[0].size);
+    }
                 let file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
