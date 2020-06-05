@@ -144,7 +144,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         };
         img.src = objectUrl;
     }
-                let file = this.files[0];
+                file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     //cropper.destroy();
