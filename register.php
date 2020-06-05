@@ -135,7 +135,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             //this.files;
 
             if (this.files && this.files.length) {
-                 alert(this.files[0].width);
+                img = new Image();
+                img = this.files[0];
+        var objectUrl = _URL.createObjectURL(file);
+        img.onload = function () {
+            alert(this.width + " " + this.height);
+            _URL.revokeObjectURL(objectUrl);
+        };
                 let file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
