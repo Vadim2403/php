@@ -141,14 +141,34 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
                 if(this.width > 300){_URL.revokeObjectURL(objectUrl);
-             file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     //cropper.destroy();
                     //$('#salo').attr('src', e.target.result);
                     dialogCropper.modal('show');
                     cropper.replace(e.target.result);
-                      const image = document.getElementById('salo');
+
+                }
+                reader.readAsDataURL(file);
+                }
+                             else{
+                alert("Image must be more massive than 300");
+                document.getElementById("image").value = "";
+                }
+            }
+ 
+        };
+        img.src = objectUrl;
+    }
+    
+
+               
+
+
+            
+        });
+
+        const image = document.getElementById('salo');
         const cropper = new Cropper(image, {
             aspectRatio: 1/1,
             viewMode: 1,
@@ -176,28 +196,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             $("#valera").attr("src", imgContent);
             dialogCropper.modal('hide');
         });
-
-                }
-                reader.readAsDataURL(file);
-                }
-                             else{
-                alert("Image must be more massive than 300");
-                document.getElementById("image").value = "";
-                }
-            }
- 
-        };
-        img.src = objectUrl;
-    }
-    
-
-               
-
-
-            
-        });
-
-      
     
     
 
