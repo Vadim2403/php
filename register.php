@@ -21,7 +21,13 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/upload/';
         $file_name= uniqid('100_').'.jpg';
         $file_save_path=$uploaddir.$file_name;
-
+        $size = getimagesize($file_save_path);
+        if($size[0] < 300)
+        {
+          echo "<script type='text/javascript'>alert('Фото занадто мале, ширина меньше 300'); window.history.replaceState( null, null, window.location.href );</script>";
+          //sd
+          break;
+        }
         my_image_resize(100, 100, $file_save_path, 'image');
 //        if (move_uploaded_file($_FILES['image']['tmp_name'], $file_save_path)) {
 //            echo "Р¤Р°Р№Р» РєРѕСЂСЂРµРєС‚РµРЅ Рё Р±С‹Р» СѓСЃРїРµС€РЅРѕ Р·Р°РіСЂСѓР¶РµРЅ.\n";
