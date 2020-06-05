@@ -133,12 +133,15 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         $("#image").on("change", function() {
             //console.log("----select file------", this.files);
             //this.files;
-var img = new Image();
-img.onload = function() {
-  alert(this.width + 'x' + this.height);
-}
+
             if (this.files && this.files.length) {
-              
+              img = new Image();
+        var objectUrl = _URL.createObjectURL(file);
+        img.onload = function () {
+            alert(this.width + " " + this.height);
+            _URL.revokeObjectURL(objectUrl);
+        };
+        img.src = objectUrl;
                 let file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
