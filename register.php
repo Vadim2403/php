@@ -167,7 +167,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                
 
 
-            }
+            
         });
 
         const image = document.getElementById('salo');
