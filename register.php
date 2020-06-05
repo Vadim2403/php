@@ -139,7 +139,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
             alert(this.width + " " + this.height);
-            _URL.revokeObjectURL(objectUrl);
+            
         };
         img.src = objectUrl;
                 let file = this.files[0];
