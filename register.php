@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         {
           echo "<script type='text/javascript'>alert('Фото занадто мале, ширина меньше 300'); window.history.replaceState( null, null, window.location.href );</script>";
           //sd
-          break;
+          exit();
         }
         my_image_resize(100, 100, $file_save_path, 'image');
 //        if (move_uploaded_file($_FILES['image']['tmp_name'], $file_save_path)) {
