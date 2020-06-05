@@ -140,14 +140,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         img = new Image();
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
-            wid = this.width;_URL.revokeObjectURL(objectUrl);
+                if(this.width > 300){;_URL.revokeObjectURL(objectUrl);
             alert(this.width + " im here");
-        };
-        img.src = objectUrl;
-    }
-    
-    if(wid > 300){
-                file = this.files[0];
+             file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
                     //cropper.destroy();
@@ -158,10 +153,18 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
                 }
                 reader.readAsDataURL(file);
                 }
-                else{
+            }
+              else{
                 alert("Image must be more massive than 300");
                 document.getElementById("image").value = "";
                 }
+        };
+        img.src = objectUrl;
+    }
+    
+
+               
+
 
             }
         });
