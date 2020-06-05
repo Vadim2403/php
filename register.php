@@ -141,7 +141,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         var objectUrl = _URL.createObjectURL(file);
         img.onload = function () {
                 if(this.width > 300){_URL.revokeObjectURL(objectUrl);
-            alert(this.width + " im here");
              file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
