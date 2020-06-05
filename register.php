@@ -135,7 +135,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
             //this.files;
 
             if (this.files && this.files.length) {
-                 alert(this.files[0].size);
+                 alert(this.files[0].width);
                 let file = this.files[0];
                 var reader = new FileReader();
                 reader.onload = function(e) {
