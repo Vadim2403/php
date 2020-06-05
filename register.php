@@ -21,7 +21,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST") {
         $uploaddir = $_SERVER['DOCUMENT_ROOT'].'/upload/';
         $file_name= uniqid('100_').'.jpg';
         $file_save_path=$uploaddir.$file_name;
-        $size = getimagesize($file_save_path);
+        $size = getimagesize($file_name);
         echo "<script type='text/javascript'>alert($size[0]); window.history.replaceState( null, null, window.location.href );</script>";
         if($size[0] < 300)
         {
